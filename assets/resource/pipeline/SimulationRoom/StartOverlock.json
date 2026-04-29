@@ -58,12 +58,12 @@
     "BIOSSetting": {
         "desc": "BIOS设置",
         "next": [
-            "25Check",
+            "SimulationRoomOverclockLevel25Selected",
             "[JumpBack]OptionSelect",
             "[JumpBack]SimulationRoomScrollUp"
         ]
     },
-    "25Check": {
+    "SimulationRoomOverclockLevel25Selected": {
         "desc": "检查难度是否为25",
         "recognition": {
             "type": "OCR",

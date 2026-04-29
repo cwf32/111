@@ -5,8 +5,8 @@
             "type": "And",
             "param": {
                 "all_of": [
-                    "_BeginSimulation1",
-                    "_BeginSimulation2"
+                    "SimulationRoomBeginRedDotDetected",
+                    "SimulationRoomBeginTextDetected"
                 ]
             }
         },
@@ -82,7 +82,7 @@
         },
         "post_wait_freezes": 500
     },
-    "_BeginSimulation1": {
+    "SimulationRoomBeginRedDotDetected": {
         "desc": "开始模拟的红点",
         "recognition": {
             "type": "TemplateMatch",
@@ -99,7 +99,7 @@
             }
         }
     },
-    "_BeginSimulation2": {
+    "SimulationRoomBeginTextDetected": {
         "desc": "开始模拟的文本",
         "recognition": {
             "type": "OCR",
