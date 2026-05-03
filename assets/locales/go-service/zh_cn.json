@@ -13,5 +13,13 @@
     "tasker.hdr_warning.recommend_1": "  • 在显示器设置中关闭 HDR",
     "tasker.hdr_warning.recommend_2": "  • 或在 Windows 设置 → 系统 → 显示 → HDR 中关闭",
     "tasker.hdr_warning.recommend_3": "  • 关闭后重新运行任务",
-    "tasker.hdr_warning.note": "ℹ️ 任务将继续执行，但可能会失败"
+    "tasker.hdr_warning.note": "ℹ️ 任务将继续执行，但可能会失败",
+    "tasker.membership_warning.title": "🔒 警告：需要会员权限！",
+    "tasker.membership_warning.stopped": "🚫 任务已强制停止",
+    "tasker.membership_warning.desc": "💡 此任务需要金Doro会员或以上才能执行。",
+    "tasker.membership_warning.current_tier": "当前等级：",
+    "tasker.membership_warning.requirement": "要求：金Doro会员 (UserLevel >= 3)",
+    "tasker.membership_warning.tier_free": "普通用户（免费）",
+    "tasker.membership_warning.tip": "💡 赞助后即可解锁所有会员任务",
+    "tasker.membership_warning.non_member_log": "非会员尝试执行会员任务，已停止。赞助地址: https://doropay.top"
 }

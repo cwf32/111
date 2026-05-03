@@ -4,7 +4,15 @@
             "name": "QuickDaily",
             "label": "$preset.QuickDaily.label",
             "description": "$preset.QuickDaily.description",
+            "default_check": true,
             "task": [
+                {
+                    "name": "CashShop",
+                    "option": {
+                        "CashShopFreePackage": "Yes",
+                        "StepUpPackage": "No"
+                    }
+                },
                 {
                     "name": "Shop",
                     "option": {
@@ -35,14 +43,6 @@
                         "DefenseRewards": "Yes",
                         "BulletinBoard": "Yes",
                         "BriefEncounter": "Yes"
-                    }
-                },
-                {
-                    "name": "Advise",
-                    "option": {
-                        "NikkeAdvise": "Yes",
-                        "AdviseEpisodeReward": "Yes",
-                        "AdviseEpisodeViewingReward": "Yes"
                     }
                 },
                 {

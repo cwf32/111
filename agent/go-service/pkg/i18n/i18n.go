@@ -27,6 +27,7 @@ const (
 var htmlTemplates = map[string]string{
 	"tasker.hdr_warning":          "HTML/hdr-warning.html",
 	"tasker.aspect_ratio_warning": "HTML/aspect-ratio-warning.html",
+	"tasker.membership_warning":   "HTML/membership-warning.html",
 }
 
 var (

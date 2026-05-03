@@ -13,5 +13,13 @@
     "tasker.hdr_warning.recommend_1": "  • Disable HDR in your monitor settings",
     "tasker.hdr_warning.recommend_2": "  • Or turn off HDR in Windows Settings → System → Display → HDR",
     "tasker.hdr_warning.recommend_3": "  • Restart the task after disabling HDR",
-    "tasker.hdr_warning.note": "ℹ️ The task will continue, but may fail."
+    "tasker.hdr_warning.note": "ℹ️ The task will continue, but may fail.",
+    "tasker.membership_warning.title": "🔒 Warning: Membership Required!",
+    "tasker.membership_warning.stopped": "🚫 Task has been force-stopped",
+    "tasker.membership_warning.desc": "💡 This task requires Gold Doro membership or above.",
+    "tasker.membership_warning.current_tier": "Current tier:",
+    "tasker.membership_warning.requirement": "Required: Gold Doro membership (UserLevel >= 3)",
+    "tasker.membership_warning.tier_free": "Free user",
+    "tasker.membership_warning.tip": "💡 Sponsor to unlock all member-only tasks",
+    "tasker.membership_warning.non_member_log": "Non-member attempted member-only task, stopped. Sponsor: https://doropay.top"
 }
