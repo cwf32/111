@@ -1,13 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"os"
 	"path/filepath"
 
 	"github.com/1204244136/MDA/agent/go-service/pkg/i18n"
 	"github.com/1204244136/MDA/agent/go-service/pkg/pienv"
 	"github.com/MaaXYZ/maa-framework-go/v4"
-	"github.com/bytedance/sonic"
 	"github.com/rs/zerolog/log"
 )
 
@@ -44,8 +44,8 @@ func main() {
 		Msg("Initializing MAA framework")
 	if err := maa.Init(
 		maa.WithLibDir(libDir),
-		maa.WithJSONEncoder(sonic.Marshal),
-		maa.WithJSONDecoder(sonic.Unmarshal),
+		maa.WithJSONEncoder(json.Marshal),
+		maa.WithJSONDecoder(json.Unmarshal),
 	); err != nil {
 		log.Fatal().
 			Err(err).

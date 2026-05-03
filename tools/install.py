@@ -213,7 +213,8 @@ def install_agent():
     else:
         print("  Warning: Go agent binary not found, attempting to build...")
         if not build_go_agent():
-            print("  Failed to build Go agent, skipping.")
+            print("  Error: Go agent binary not found and build failed.")
+            sys.exit(1)
 
 
 if __name__ == "__main__":
