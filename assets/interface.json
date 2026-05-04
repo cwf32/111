@@ -5,6 +5,8 @@
     "contact": "QQ群: 584275905",
     "license": "LICENSE",
     "github": "https://github.com/1204244136/MDA",
+    "mirrorchyan_rid": "MDA",
+    "mirrorchyan_multiplatform": true,
     "version": "1.0.0",
     "languages": {
         "zh_cn": "locales/interface/zh_cn.json",
