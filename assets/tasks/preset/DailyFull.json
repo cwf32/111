@@ -84,6 +84,14 @@
                         "DailyRewardsPassMain": "Yes",
                         "DailyRewardsFreeRecruit": "Yes"
                     }
+                },
+                {
+                    "name": "LargeEvent",
+                    "option": {
+                        "LargeEventTheme": "StarAnis",
+                        "LargeEventStoryPriority": "Story2First",
+                        "LargeEventContent": ["LargeEventLoginStamp", "LargeEventChallenge", "LargeEventStory", "LargeEventMission"]
+                    }
                 }
             ]
         }
