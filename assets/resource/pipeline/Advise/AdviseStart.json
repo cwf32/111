@@ -10,6 +10,18 @@
     "AdviseAttemptsExhausted": {
         "desc": "次数耗尽",
         "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    "AdviseGrayButtonVisible",
+                    "Advise0AttemptsVisible"
+                ]
+            }
+        }
+    },
+    "AdviseGrayButtonVisible": {
+        "desc": "按钮变灰",
+        "recognition": {
             "type": "ColorMatch",
             "param": {
                 "roi": [
@@ -29,6 +41,25 @@
                     180
                 ],
                 "count": 500
+            }
+        }
+    },
+    "Advise0AttemptsVisible": {
+        "desc": "次数变0",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    730,
+                    599,
+                    13,
+                    14
+                ],
+                "expected": [
+                    "0",
+                    "O",
+                    "o"
+                ]
             }
         }
     },
