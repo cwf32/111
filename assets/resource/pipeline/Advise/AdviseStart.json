@@ -66,18 +66,17 @@
     "AdviseCollectionCompletedVisible": {
         "desc": "已收集完咨询日志",
         "recognition": {
-            "type": "TemplateMatch",
+            "type": "OCR",
             "param": {
                 "roi": [
-                    786,
-                    468,
-                    42,
-                    23
+                    790,
+                    469,
+                    19,
+                    20
                 ],
-                "template": [
-                    "Advise/20.png"
-                ],
-                "threshold": 0.9
+                "expected": [
+                    ".*20.*"
+                ]
             }
         }
     },
