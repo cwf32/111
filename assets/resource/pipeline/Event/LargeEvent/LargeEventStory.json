@@ -142,7 +142,7 @@
                     475
                 ],
                 "template": [
-                    "LargeEvent/StarAnis/StarAnisStory2StageNormal.png"
+                    "Common/RedDot.png" //占位，应该去task页面修改
                 ],
                 "order_by": "Vertical",
                 "index": -1
@@ -185,7 +185,7 @@
                     475
                 ],
                 "template": [
-                    "Common/RedDot.png"
+                    "Common/RedDot.png" //占位，应该去task页面修改
                 ],
                 "order_by": "Vertical",
                 "index": -1

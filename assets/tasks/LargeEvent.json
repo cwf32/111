@@ -39,7 +39,8 @@
                                 "param": {
                                     "template": [
                                         "LargeEvent/StarAnis/StarAnisStory1Stage.png",
-                                        "LargeEvent/StarAnis/StarAnisStory2StageNormal.png"
+                                        "LargeEvent/StarAnis/StarAnisStory2StageNormal.png",
+                                        "LargeEvent/StarAnis/StarAnisStory2StageHard.png"
                                     ]
                                 }
                             }
@@ -49,7 +50,8 @@
                                 "param": {
                                     "template": [
                                         "LargeEvent/StarAnis/StarAnisStory1StageRepeatable.png",
-                                        "LargeEvent/StarAnis/StarAnisStory2StageNormalRepeatable.png"
+                                        "LargeEvent/StarAnis/StarAnisStory2StageNormalRepeatable.png",
+                                        "LargeEvent/StarAnis/StarAnisStory2StageHardRepeatable.png"
                                     ]
                                 }
                             }
