@@ -1,4 +1,5 @@
 {
+    "contact.file": "locales/CONTACT.en_us.md",
     "controller.Win32-Window.label": "PC-Default",
     "controller.Win32-Window.description": "Best compatibility, suitable for everyday use. Supports game minimization, may occasionally grab the mouse.",
     "controller.Win32-Window-Background.label": "PC-Background",
