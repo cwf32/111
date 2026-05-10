@@ -67,8 +67,8 @@
                             "action": {
                                 "param": {
                                     "target_offset": [
-                                        50,
-                                        -50,
+                                        70,
+                                        -70,
                                         0,
                                         0
                                     ]
