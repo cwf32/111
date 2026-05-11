@@ -1,7 +1,22 @@
 {
-    "DailyRewardsFreeRecruitEntry": {
+    "DailyRewardsFreeRecruitMain": {
         "desc": "免费招募入口",
         "max_hit": 1,
+        "next": [
+            "DailyRewardsFreeRecruitEntry",
+            "[JumpBack]NavigationEnterHall"
+        ]
+    },
+    "DailyRewardsFreeRecruitEntry": {
+        "desc": "在大厅寻找免费招募入口",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    "NavigationArkVisible"
+                ]
+            }
+        },
         "next": [
             "DailyRewardsFreeRecruitStart",
             "CommonEndTask"
