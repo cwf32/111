@@ -50,7 +50,8 @@
             "type": "Click"
         },
         "next": [
-            "CoordinatedOperationsFlow"
+            "CoordinatedOperationsFlow",
+            "CoordinatedOperationsSearch"
         ]
     },
     "CoordinatedOperationsFlow": {
