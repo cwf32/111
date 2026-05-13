@@ -116,16 +116,16 @@
     "DailyRewardsFreeRecruitVisible": {
         "desc": "免费招募的标识",
         "recognition": {
-            "type": "OCR",
+            "type": "TemplateMatch",
             "param": {
                 "roi": [
-                    752,
-                    668,
-                    60,
-                    17
+                    750,
+                    665,
+                    64,
+                    22
                 ],
-                "expected": [
-                    ".*免费.*"
+                "template": [
+                    "DailyRewards/FreeRecruit/FreeRecruit.png"
                 ]
             }
         }
