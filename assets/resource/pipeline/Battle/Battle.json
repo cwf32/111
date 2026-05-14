@@ -200,12 +200,7 @@
         "recognition": {
             "type": "ColorMatch",
             "param": {
-                "roi": [
-                    1140,
-                    659,
-                    122,
-                    37
-                ],
+                "roi": "BattleNextStateVisible",
                 "lower": [
                     200,
                     200,

@@ -1,0 +1,120 @@
+{
+    "SmallEventMission": {
+        "max_hit": 1,
+        "timeout": 60000,
+        "desc": "小活动任务",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    314,
+                    413,
+                    661,
+                    294
+                ],
+                "expected": [
+                    ".*任务.*"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "SmallEventMissionFlow"
+        ]
+    },
+    "SmallEventMissionVisible": {
+        "desc": "小活动任务内部的标识",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    680,
+                    624,
+                    137,
+                    35
+                ],
+                "expected": [
+                    ".*全部.*"
+                ]
+            }
+        }
+    },
+    "SmallEventMissionFlow": {
+        "desc": "小活动任务流程",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    "SmallEventMissionVisible"
+                ]
+            }
+        },
+        "next": [
+            "SmallEventMissionClaimedFlow",
+            "[JumpBack]SmallEventMissionClaimAll",
+            "[JumpBack]CommonConfirmReward"
+        ]
+    },
+    "SmallEventMissionClaimed": {
+        "desc": "小活动任务奖励已领取",
+        "recognition": {
+            "type": "ColorMatch",
+            "param": {
+                "roi": [
+                    680,
+                    624,
+                    137,
+                    35
+                ],
+                "lower": [
+                    180,
+                    180,
+                    180
+                ],
+                "upper": [
+                    220,
+                    220,
+                    220
+                ],
+                "count": 100
+            }
+        }
+    },
+    "SmallEventMissionClaimedFlow": {
+        "desc": "小活动任务奖励已领取流程",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    "SmallEventMissionClaimed"
+                ]
+            }
+        },
+        "next": [
+            "CommonGoBack"
+        ]
+    },
+    "SmallEventMissionClaimAll": {
+        "desc": "小活动任务奖励领取",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    680,
+                    624,
+                    137,
+                    35
+                ],
+                "expected": [
+                    ".*全部.*"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        }
+    }
+}

@@ -1,0 +1,119 @@
+{
+    "task": [
+        {
+            "name": "SmallEvent",
+            "label": "$task.SmallEvent.label",
+            "entry": "SmallEventMain",
+            "description": "$task.SmallEvent.description",
+            "option": [
+                "SmallEventTheme",
+                "SmallEventContent"
+            ],
+            "group": [
+                "daily"
+            ]
+        }
+    ],
+    "option": {
+        "SmallEventTheme": {
+            "type": "select",
+            "default_case": "BSideIdol",
+            "label": "$option.SmallEventTheme.label",
+            "cases": [
+                {
+                    "name": "BSideIdol",
+                    "label": "$option.SmallEventTheme.BSideIdol",
+                    "pipeline_override": {
+                        "SmallEventEntry": {
+                            "recognition": {
+                                "param": {
+                                    "template": [
+                                        "SmallEvent/B-SideIdol/B-SideIdolLogo.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "SmallEventStory1StageClick": {
+                            "recognition": {
+                                "param": {
+                                    "template": [
+                                        "SmallEvent/B-SideIdol/B-SideIdolStageNormal.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "SmallEventStory2StageNormalClick": {
+                            "recognition": {
+                                "param": {
+                                    "template": [
+                                        "SmallEvent/B-SideIdol/B-SideIdolStageNormal.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "SmallEventStory1StageRepeatableClick": {
+                            "recognition": {
+                                "param": {
+                                    "template": [
+                                        "SmallEvent/B-SideIdol/B-SideIdolStageNormalRepeatable.png"
+                                    ]
+                                }
+                            }
+                        },
+                        "SmallEventStory2StageNormalRepeatableClick": {
+                            "recognition": {
+                                "param": {
+                                    "template": [
+                                        "SmallEvent/B-SideIdol/B-SideIdolStageNormalRepeatable.png"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "Other",
+                    "label": "$option.SmallEventTheme.Other"
+                }
+            ]
+        },
+        "SmallEventContent": {
+            "type": "checkbox",
+            "default_case": [
+                "SmallEventChallenge",
+                "SmallEventStory",
+                "SmallEventMission"
+            ],
+            "label": "$option.SmallEventContent.label",
+            "cases": [
+                {
+                    "name": "SmallEventChallenge",
+                    "label": "$option.SmallEventContent.SmallEventChallenge",
+                    "pipeline_override": {
+                        "SmallEventChallenge": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "SmallEventStory",
+                    "label": "$option.SmallEventContent.SmallEventStory",
+                    "pipeline_override": {
+                        "SmallEventStory": {
+                            "enabled": true
+                        }
+                    }
+                },
+                {
+                    "name": "SmallEventMission",
+                    "label": "$option.SmallEventContent.SmallEventMission",
+                    "pipeline_override": {
+                        "SmallEventMission": {
+                            "enabled": true
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}

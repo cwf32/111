@@ -1,6 +1,6 @@
 {
-    "LargeEventMain": {
-        "desc": "大活动",
+    "SmallEventMain": {
+        "desc": "小活动",
         "action": {
             "type": "Custom",
             "param": {
@@ -8,12 +8,12 @@
             }
         },
         "next": [
-            "LargeEventEntry",
+            "SmallEventEntry",
             "[JumpBack]NavigationEnterHall"
         ]
     },
-    "LargeEventEntry": {
-        "desc": "大活动入口",
+    "SmallEventEntry": {
+        "desc": "小活动入口",
         "recognition": {
             "type": "TemplateMatch",
             "param": {
@@ -32,12 +32,12 @@
             "type": "Click"
         },
         "next": [
-            "LargeEventMainPageFlow",
-            "LargeEventEntry"
+            "SmallEventMainPageFlow",
+            "SmallEventEntry"
         ]
     },
-    "LargeEventMainPageEntered": {
-        "desc": "已进入活动地区",
+    "SmallEventMainPageEntered": {
+        "desc": "已进入剧情活动",
         "recognition": {
             "type": "OCR",
             "param": {
@@ -48,18 +48,18 @@
                     30
                 ],
                 "expected": [
-                    ".*活动地.*"
+                    ".*剧情.*"
                 ]
             }
         }
     },
-    "LargeEventMainPageFlow": {
+    "SmallEventMainPageFlow": {
         "desc": "活动地区流程",
         "recognition": {
             "type": "And",
             "param": {
                 "all_of": [
-                    "LargeEventMainPageEntered"
+                    "SmallEventMainPageEntered"
                 ]
             }
         },
@@ -74,17 +74,16 @@
         },
         "action": "DoNothing",
         "next": [
-            "[JumpBack]LargeEventLoginStamp",
-            "[JumpBack]LargeEventChallenge",
-            "[JumpBack]LargeEventStory",
-            "[JumpBack]LargeEventMission",
+            "[JumpBack]SmallEventChallenge",
+            "[JumpBack]SmallEventStory",
+            "[JumpBack]SmallEventMission",
             "CommonEndTask"
         ]
     },
-    "LargeEventGoBack": {
-        "desc": "返回活动地区",
+    "SmallEventGoBack": {
+        "desc": "返回剧情活动页面",
         "next": [
-            "LargeEventMainPageEntered",
+            "SmallEventMainPageEntered",
             "[JumpBack]DialoguesSkipStory",
             "[JumpBack]CommonGoBack"
         ]

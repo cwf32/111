@@ -1,0 +1,35 @@
+{
+    "SmallEventChallenge": {
+        "max_hit": 1,
+        "timeout": 60000,
+        "desc": "大活动挑战",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    485,
+                    536,
+                    308,
+                    79
+                ],
+                "replace": [
+                    [
+                        "排",
+                        "挑"
+                    ]
+                ],
+                "expected": [
+                    ".*挑战.*"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "next": [
+            "[JumpBack]EventChallenge",
+            "SmallEventGoBack"
+        ]
+    }
+}

@@ -1,0 +1,270 @@
+{
+    "SmallEventStory": {
+        "timeout": 60000,
+        "max_hit": 1,
+        "desc": "小活动剧情",
+        "enabled": false,
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    314,
+                    413,
+                    661,
+                    294
+                ],
+                "expected": [
+                    ".*加成.*"
+                ]
+            }
+        },
+        "action": {
+            "type": "Click",
+            "param": {
+                "target_offset": [
+                    0,
+                    -50,
+                    0,
+                    0
+                ]
+            }
+        },
+        "post_wait_freezes": 500,
+        "next": [
+            "SmallEventEventStagePageFlow"
+        ]
+    },
+    "SmallEventEventStagePageEntered": {
+        "desc": "已进入小活动活动关卡页面",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    5,
+                    18,
+                    50,
+                    16
+                ],
+                "expected": [
+                    ".*活动关.*"
+                ]
+            }
+        }
+    },
+    "SmallEventEventStagePageFlow": {
+        "desc": "小活动活动关卡页面流程",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    "SmallEventEventStagePageEntered"
+                ]
+            }
+        },
+        "post_wait_freezes": {
+            "time": 500,
+            "target": [
+                494,
+                505,
+                294,
+                131
+            ]
+        },
+        "next": [
+            "SmallEventEventStageBattleFlow"
+        ]
+    },
+    "SmallEventEventStageBattleFlow": {
+        "desc": "小活动活动关卡页面战斗流程",
+        "next": [
+            "SmallEventEventStageBattlePage",
+            "[JumpBack]SmallEventStory1StageClick",
+            "[JumpBack]SmallEventStory2StageNormalClick",
+            "[JumpBack]SmallEventStory2StageHardClick",
+            "SmallEventEventStageQuickBattleFlow"
+        ]
+    },
+    "SmallEventEventStageQuickBattleFlow": {
+        "desc": "小活动活动关卡页面快速战斗流程",
+        "next": [
+            "SmallEventEventStageBattlePage",
+            "[JumpBack]SmallEventStory1StageRepeatableClick",
+            "[JumpBack]SmallEventStory2StageNormalRepeatableClick",
+            "[JumpBack]SmallEventStory2StageHardRepeatableClick",
+            "SmallEventGoBack"
+        ]
+    },
+    "SmallEventEventStageBattlePage": {
+        "desc": "小活动活动关卡页面战斗页面",
+        "recognition": {
+            "type": "And",
+            "param": {
+                "all_of": [
+                    "BattleMainVisible"
+                ]
+            }
+        },
+        "next": [
+            "[JumpBack]BattleStart",
+            "SmallEventGoBack"
+        ]
+    },
+    "SmallEventStoryVisible": {
+        "desc": "小活动剧情活动页面标识",
+        "recognition": {
+            "type": "OCR",
+            "param": {
+                "roi": [
+                    5,
+                    18,
+                    50,
+                    16
+                ],
+                "expected": [
+                    "剧情活动"
+                ]
+            }
+        }
+    },
+    "SmallEventStory1StageClick": {
+        "desc": "小活动故事1关卡点击",
+        "max_hit": 1,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    314,
+                    103,
+                    661,
+                    604
+                ],
+                "template": [
+                    "Common/RedDot.png" //占位，应该去task页面修改
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "SmallEventStory2StageNormalClick": {
+        "desc": "小活动故事2普通关卡点击",
+        "max_hit": 1,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    314,
+                    103,
+                    661,
+                    604
+                ],
+                "template": [
+                    "Common/RedDot.png" //占位，应该去task页面修改
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "SmallEventStory2StageHardClick": {
+        "desc": "小活动故事2困难关卡点击",
+        "max_hit": 1,
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    314,
+                    103,
+                    661,
+                    604
+                ],
+                "template": [
+                    "Common/RedDot.png" //占位，应该去task页面修改
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "SmallEventStory1StageRepeatableClick": {
+        "desc": "小活动故事1关卡可扫荡点击",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    314,
+                    103,
+                    661,
+                    604
+                ],
+                "template": [
+                    "Common/RedDot.png" //占位，应该去task页面修改
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "SmallEventStory2StageNormalRepeatableClick": {
+        "desc": "小活动故事2普通关卡可扫荡点击",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    314,
+                    103,
+                    661,
+                    604
+                ],
+                "template": [
+                    "Common/RedDot.png" //占位，应该去task页面修改
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    },
+    "SmallEventStory2StageHardRepeatableClick": {
+        "desc": "小活动故事2困难关卡可扫荡点击",
+        "recognition": {
+            "type": "TemplateMatch",
+            "param": {
+                "roi": [
+                    314,
+                    103,
+                    661,
+                    604
+                ],
+                "template": [
+                    "Common/RedDot.png" //占位，应该去task页面修改
+                ],
+                "order_by": "Vertical",
+                "index": -1
+            }
+        },
+        "action": {
+            "type": "Click"
+        },
+        "post_wait_freezes": 500
+    }
+}
