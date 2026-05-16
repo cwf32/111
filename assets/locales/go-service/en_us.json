@@ -23,5 +23,8 @@
     "tasker.membership_warning.tip": "💡 Sponsor to unlock all member-only tasks",
     "tasker.membership_check.verified": "🍊 Member task verified (%s, valid until %s)",
     "tasker.membership_check.sponsor": "🍊 Sponsor: %s",
-    "tasker.membership_check.denied": "🍊 Member task - not a member, task stopped. Sponsor: %s"
+    "tasker.membership_check.denied": "🍊 Member task - not a member, task stopped. Sponsor: %s",
+    "tasker.process_warning.title": "⚠️ Note: The following processes are running",
+    "tasker.process_warning.recommend_1": "ℹ️ Please turn off OSD FPS overlays and filters",
+    "tasker.process_warning.note": "💡 These features interfere with image recognition"
 }
