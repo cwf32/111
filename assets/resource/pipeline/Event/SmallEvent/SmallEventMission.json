@@ -55,7 +55,8 @@
         "next": [
             "SmallEventMissionClaimedFlow",
             "[JumpBack]SmallEventMissionClaimAll",
-            "[JumpBack]CommonConfirmReward"
+            "[JumpBack]CommonConfirmReward",
+            "[JumpBack]CommonConfirmAction"
         ]
     },
     "SmallEventMissionClaimed": {
