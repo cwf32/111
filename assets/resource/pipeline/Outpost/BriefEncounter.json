@@ -144,7 +144,12 @@
         "recognition": {
             "type": "OCR",
             "param": {
-                "roi": [631,667,60,32],
+                "roi": [
+                    631,
+                    667,
+                    60,
+                    32
+                ],
                 "expected": [
                     "关闭"
                 ]
@@ -153,7 +158,6 @@
         "action": {
             "type": "Click"
         }
-
     },
     "BriefEncounterRepeat": {
         "desc": "再次执行突发活动",
