@@ -42,11 +42,16 @@ func runRuntimeQuotaCheck(ctx *maa.Context) bool {
 		Int64("limit_seconds", snapshot.LimitSeconds).
 		Int64("used_seconds", snapshot.UsedSeconds).
 		Int64("remaining_seconds", snapshot.RemainingSeconds).
+		Bool("unlimited_runtime", snapshot.UnlimitedRuntime).
 		Str("business_date", snapshot.BusinessDate).
 		Msg("RuntimeQuotaCheck: quota evaluated")
 
 	if ok {
 		notifyOnce.Do(func() {
+			if snapshot.UnlimitedRuntime {
+				maafocus.Print(ctx, i18n.T("tasker.membership_check.debug_unlimited"))
+				return
+			}
 			maafocus.Print(ctx, fmt.Sprintf(
 				i18n.T("tasker.membership_check.verified"),
 				snapshot.TierName,

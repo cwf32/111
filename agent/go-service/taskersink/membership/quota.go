@@ -26,6 +26,7 @@ type QuotaSnapshot struct {
 	RemainingSeconds int64
 	BusinessDate     string
 	SponsorURL       string
+	UnlimitedRuntime bool
 }
 
 var quotaMu sync.Mutex
@@ -106,6 +107,18 @@ func quotaSnapshotLocked(status *MembershipStatus, now time.Time) (QuotaSnapshot
 }
 
 func snapshotFromState(status *MembershipStatus, state quotaState) QuotaSnapshot {
+	if status.UnlimitedRuntime {
+		return QuotaSnapshot{
+			TierName:         status.TierName,
+			TierCode:         status.TierCode,
+			LimitSeconds:     0,
+			UsedSeconds:      0,
+			RemainingSeconds: 0,
+			BusinessDate:     state.BusinessDate,
+			UnlimitedRuntime: true,
+		}
+	}
+
 	limit := int64(status.DailyRuntimeMinutes) * 60
 	if limit <= 0 {
 		limit = 10 * 60
@@ -126,16 +139,23 @@ func snapshotFromState(status *MembershipStatus, state quotaState) QuotaSnapshot
 		RemainingSeconds: remaining,
 		BusinessDate:     state.BusinessDate,
 		SponsorURL:       SponsorURL(status),
+		UnlimitedRuntime: false,
 	}
 }
 
 func GetQuotaSnapshot(status *MembershipStatus) (QuotaSnapshot, error) {
+	if status.UnlimitedRuntime {
+		return snapshotFromState(status, quotaState{BusinessDate: quotaBusinessDate(time.Now())}), nil
+	}
 	quotaMu.Lock()
 	defer quotaMu.Unlock()
 	return quotaSnapshotLocked(status, time.Now())
 }
 
 func AddQuotaUsage(status *MembershipStatus, delta time.Duration) (QuotaSnapshot, error) {
+	if status.UnlimitedRuntime {
+		return snapshotFromState(status, quotaState{BusinessDate: quotaBusinessDate(time.Now())}), nil
+	}
 	if delta <= 0 {
 		return GetQuotaSnapshot(status)
 	}
@@ -163,6 +183,9 @@ func EnsureQuotaAvailable(status *MembershipStatus) (QuotaSnapshot, bool, error)
 	if err != nil {
 		fallback := snapshotFromState(status, quotaState{BusinessDate: quotaBusinessDate(time.Now())})
 		return fallback, true, err
+	}
+	if snapshot.UnlimitedRuntime {
+		return snapshot, true, nil
 	}
 	return snapshot, snapshot.RemainingSeconds > 0, nil
 }

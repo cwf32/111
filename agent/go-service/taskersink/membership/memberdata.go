@@ -69,6 +69,7 @@ type MembershipStatus struct {
 	RemainingDays       int
 	DailyRuntimeMinutes int
 	AllFeaturesUnlocked bool
+	UnlimitedRuntime    bool
 	IsMember            bool
 	UserID              string
 	DeviceCode          DeviceCodeV7
@@ -125,16 +126,16 @@ func checkMembership() *MembershipStatus {
 	if isDebugVersion() {
 		log.Info().Str("version", appVersion).Msg("Debug version detected, bypassing membership verification")
 		return &MembershipStatus{
-			Tier:                "Orange Pro",
-			TierCode:            "orange_pro",
-			TierName:            "Orange Pro",
+			Tier:                "Debug",
+			TierCode:            "debug",
+			TierName:            "Debug",
 			PlanCode:            "debug",
-			PlanName:            "Orange Pro 调试订阅",
+			PlanName:            "Debug",
 			StartsOn:            "00000000",
 			ExpiresOn:           "99991231",
 			RemainingDays:       9999,
-			DailyRuntimeMinutes: 180,
 			AllFeaturesUnlocked: true,
+			UnlimitedRuntime:    true,
 			IsMember:            true,
 			DeviceCode:          deviceCode,
 		}

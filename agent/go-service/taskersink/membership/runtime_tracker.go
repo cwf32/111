@@ -66,7 +66,12 @@ func (t *RuntimeTracker) start(tasker *maa.Tasker, detail maa.TaskerTaskDetail) 
 		Uint64("task_id", detail.TaskID).
 		Str("entry", detail.Entry).
 		Int64("remaining_seconds", snapshot.RemainingSeconds).
+		Bool("unlimited_runtime", snapshot.UnlimitedRuntime).
 		Msg("RuntimeTracker: started quota tracking")
+
+	if snapshot.UnlimitedRuntime {
+		return
+	}
 
 	go t.tick(tasker, status, stopCh)
 }
