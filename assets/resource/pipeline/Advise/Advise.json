@@ -97,7 +97,7 @@
                     56,
                     24
                 ],
-                "expected": ["RANK"]
+                "expected": [".*RAN.*"]
             }
         },
         "action": {
