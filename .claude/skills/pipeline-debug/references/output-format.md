@@ -12,11 +12,11 @@
 
 ## 节点语义分析
 
-| 节点名 | 类型 | 域 | 角色 | 预期行为 |
-| ------ | ---- | -- | ---- | -------- |
-| ExampleEnterPage | 动作 | Example | Enter<Page> | 点击进入目标页面 |
-| ExamplePageEntered | 检测 | Example | Entered | 确认页面已进入 |
-| CommonConfirmDialog | 动作 | Common | Confirm<Object> | 确认通用弹窗 |
+| 节点名              | 类型 | 域      | 角色            | 预期行为         |
+| ------------------- | ---- | ------- | --------------- | ---------------- |
+| ExampleEnterPage    | 动作 | Example | Enter<Page>     | 点击进入目标页面 |
+| ExamplePageEntered  | 检测 | Example | Entered         | 确认页面已进入   |
+| CommonConfirmDialog | 动作 | Common  | Confirm<Object> | 确认通用弹窗     |
 
 ## 发现的问题
 

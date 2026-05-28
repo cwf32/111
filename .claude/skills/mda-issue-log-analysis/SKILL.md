@@ -103,18 +103,18 @@ description: 分析 MDA 公开 Issue、日志包或本地日志。用于 `https:
 MDA 代码证据优先顺序：
 
 - 任务入口、控制器限制、用户选项：
-  - `assets/tasks/*.json`
-  - `assets/interface.json`
-  - `assets/tasks/preset/*.json`
+    - `assets/tasks/*.json`
+    - `assets/interface.json`
+    - `assets/tasks/preset/*.json`
 - Pipeline 节点：
-  - `assets/resource/pipeline/**/*.json`
+    - `assets/resource/pipeline/**/*.json`
 - Go 扩展逻辑：
-  - `agent/go-service/**`
+    - `agent/go-service/**`
 - Schema / 协议：
-  - `tools/schema/*.json`
+    - `tools/schema/*.json`
 - 本地化文案：
-  - `assets/locales/interface/zh_cn.json`
-  - `assets/locales/interface/en_us.json`
+    - `assets/locales/interface/zh_cn.json`
+    - `assets/locales/interface/en_us.json`
 
 总结任务、选项、界面提示时，优先读取 `zh_cn.json` 的中文文案，不要直接把 task id 当成用户可见名称。
 
@@ -236,12 +236,12 @@ MaaFramework 错误现场截图。
 
 1. 先从用户描述或 issue 拿锚点：版本、控制器、任务名、入口名、失败画面、复现步骤。
 2. 在日志中找高价值信号：
-   - `Tasker.Task.Starting` / `Succeeded` / `Failed`
-   - `Node.Recognition.Failed`
-   - `Node.Action.Failed`
-   - `timeout`
-   - `Warn` / `Error` / `Fatal`
-   - agent 启动失败、断连、被停止
+    - `Tasker.Task.Starting` / `Succeeded` / `Failed`
+    - `Node.Recognition.Failed`
+    - `Node.Action.Failed`
+    - `timeout`
+    - `Warn` / `Error` / `Fatal`
+    - agent 启动失败、断连、被停止
 3. 锁定本次复现 task_id 后再看细节。
 4. Pipeline 问题重点看 `maafw.log` 和 `mxu-tauri.log` 回调。
 5. Go 扩展问题重点看 `go-service.log` 和 `mxu-agent*.log`。
@@ -251,28 +251,34 @@ MaaFramework 错误现场截图。
 ## Common Patterns
 
 - `next` 列表中的识别连续失败直到超时：
-  - 当前画面不在预期分支、模板/OCR 失配、漏了中间节点、弹窗打断、控制器资源不匹配。
+
+    - 当前画面不在预期分支、模板/OCR 失配、漏了中间节点、弹窗打断、控制器资源不匹配。
 
 - 某个兜底返回/退出节点连续成功但流程没有前进：
-  - Pipeline 对当前状态判断错了，或回退动作本身就是错误行为。
+
+    - Pipeline 对当前状态判断错了，或回退动作本身就是错误行为。
 
 - issue 文字说失败，但目标 `task_id` 最终 `Tasker.Task.Succeeded`：
-  - 明确写“本日志未复现用户描述的失败”。
-  - 如代码仍有脆弱点，单独标为潜在风险，不当作已证实根因。
+
+    - 明确写“本日志未复现用户描述的失败”。
+    - 如代码仍有脆弱点，单独标为潜在风险，不当作已证实根因。
 
 - 用户日志流程与当前主线代码明显不一致：
-  - 先确认用户版本。
-  - 必要时按对应 tag/commit 复核旧逻辑。
-  - 不要用当前分支直接否定旧版本日志。
+
+    - 先确认用户版本。
+    - 必要时按对应 tag/commit 复核旧逻辑。
+    - 不要用当前分支直接否定旧版本日志。
 
 - 奖励/确认弹窗节点识别和点击成功，但父流程没有验证弹窗消失：
-  - 这是常见脆弱点；若本次没失败，写成潜在风险。
+
+    - 这是常见脆弱点；若本次没失败，写成潜在风险。
 
 - `go-service.log` 只有 HDR / 分辨率 / 进程告警：
-  - 通常是环境风险提示，不自动等同根因。
+
+    - 通常是环境风险提示，不自动等同根因。
 
 - `maafw.bak.*.log` 有同配置历史成功样本，本次失败：
-  - 可作为行为回归或环境差异的强旁证。
+    - 可作为行为回归或环境差异的强旁证。
 
 ## Localized Copy
 
@@ -298,7 +304,7 @@ MaaFramework 错误现场截图。
 - 本地工作中可以用相对路径引用文件。
 - 面向 issue 报告时，优先给远端 GitHub blob 行号链接。
 - MDA 链接格式：
-  - `https://github.com/1204244136/MDA/blob/<commit>/<path>#L1-L2`
+    - `https://github.com/1204244136/MDA/blob/<commit>/<path>#L1-L2`
 - `<commit>` 使用本次分析依据的版本：当前 `HEAD`、用户版本 tag，或日志对应 commit。
 
 ## Output Format

@@ -77,13 +77,13 @@ Project.exe.18188.dmp → PID 18188
 
 DMP 模块版本字段可能为空，优先从日志和配置获取：
 
-| 优先级 | 来源 | 线索 |
-| --- | --- | --- |
-| 1 | `mxu-tauri.log` | MXU / MaaFramework 初始化版本 |
-| 2 | `go-service.log` | PI environment / client version |
-| 3 | config 文件 | `interface.json`、`maa_option.json`、项目配置 |
-| 4 | issue 正文 | 用户报告版本 |
-| 5 | DMP 模块列表 | 模块 version 字段，可能为 `?` |
+| 优先级 | 来源             | 线索                                          |
+| ------ | ---------------- | --------------------------------------------- |
+| 1      | `mxu-tauri.log`  | MXU / MaaFramework 初始化版本                 |
+| 2      | `go-service.log` | PI environment / client version               |
+| 3      | config 文件      | `interface.json`、`maa_option.json`、项目配置 |
+| 4      | issue 正文       | 用户报告版本                                  |
+| 5      | DMP 模块列表     | 模块 version 字段，可能为 `?`                 |
 
 记录：
 
@@ -105,15 +105,15 @@ Expand-Archive "$Work\maa-fw.zip" "$Work\maa-fw" -Force
 
 常见 PDB：
 
-| PDB | 模块 |
-| --- | --- |
-| `MaaFramework.pdb` | MaaFramework.dll |
-| `MaaUtils.pdb` | MaaUtils.dll |
-| `MaaToolkit.pdb` | MaaToolkit.dll |
+| PDB                       | 模块                    |
+| ------------------------- | ----------------------- |
+| `MaaFramework.pdb`        | MaaFramework.dll        |
+| `MaaUtils.pdb`            | MaaUtils.dll            |
+| `MaaToolkit.pdb`          | MaaToolkit.dll          |
 | `MaaWin32ControlUnit.pdb` | MaaWin32ControlUnit.dll |
-| `MaaAdbControlUnit.pdb` | MaaAdbControlUnit.dll |
-| `MaaAgentServer.pdb` | MaaAgentServer.dll |
-| `MaaAgentClient.pdb` | MaaAgentClient.dll |
+| `MaaAdbControlUnit.pdb`   | MaaAdbControlUnit.dll   |
+| `MaaAgentServer.pdb`      | MaaAgentServer.dll      |
+| `MaaAgentClient.pdb`      | MaaAgentClient.dll      |
 
 #### MXU
 
@@ -157,8 +157,8 @@ minidump-stackwalk "<path-to-dmp>" "$Work\symbols"
 - `EXCEPTION_STACK_OVERFLOW` (`0xC00000FD`)：无限递归或栈对象过大。
 - `EXCEPTION_ILLEGAL_INSTRUCTION` (`0xC000001D`)：CPU 指令集、二进制损坏或错误模块。
 - `STATUS_STACK_BUFFER_OVERRUN` (`0xC0000409`)：Windows fast-fail，不一定是真缓冲区溢出。
-  - 参数 `0x7` 常见于 `std::terminate()` / `abort()`，可能是未捕获 C++ 异常。
-  - 需要看调用者帧，而不是只归因到 `ucrtbase.dll`。
+    - 参数 `0x7` 常见于 `std::terminate()` / `abort()`，可能是未捕获 C++ 异常。
+    - 需要看调用者帧，而不是只归因到 `ucrtbase.dll`。
 - `EXCEPTION_BREAKPOINT` (`0x80000003`)：断点、assert、panic 或主动触发崩溃。
 
 #### 模块归属
@@ -200,11 +200,11 @@ Frame 1: ...
 
 ## 关键模块版本
 
-| Module | Version |
-| ------ | ------- |
-| MaaFramework.dll | ... |
-| mxu.exe | ... |
-| Project executable | ... |
+| Module             | Version |
+| ------------------ | ------- |
+| MaaFramework.dll   | ...     |
+| mxu.exe            | ...     |
+| Project executable | ...     |
 
 ## 根因判断
 

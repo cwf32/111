@@ -89,13 +89,13 @@ compatibility: Designed for Claude Code
                 {
                     "name": "Yes",
                     "pipeline_override": {
-                        "TargetNode": { "enabled": true }
+                        "TargetNode": {"enabled": true}
                     }
                 },
                 {
                     "name": "No",
                     "pipeline_override": {
-                        "TargetNode": { "enabled": false }
+                        "TargetNode": {"enabled": false}
                     }
                 }
             ]

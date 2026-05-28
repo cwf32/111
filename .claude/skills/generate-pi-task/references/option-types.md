@@ -6,11 +6,11 @@
 
 扫描 Pipeline 节点中的 `enabled` 字段：
 
-| `enabled` 值 | 含义 | 选项行为 |
-| --- | --- | --- |
-| `false` | 节点默认关闭 | 选项让用户打开它 |
-| `true` | 节点默认开启 | 选项让用户关闭它 |
-| 缺失 | 不是直接可切换节点 | 跳过，除非它是 select/checkbox 的路由父节点 |
+| `enabled` 值 | 含义               | 选项行为                                    |
+| ------------ | ------------------ | ------------------------------------------- |
+| `false`      | 节点默认关闭       | 选项让用户打开它                            |
+| `true`       | 节点默认开启       | 选项让用户关闭它                            |
+| 缺失         | 不是直接可切换节点 | 跳过，除非它是 select/checkbox 的路由父节点 |
 
 含 `enabled` 的节点通常是 PI option 的候选，但不要机械地为每个节点生成独立选项；先分析父子和兄弟关系。
 
@@ -43,15 +43,15 @@ Parent.next: ["OptionA", "OptionB", "EndTask"]
         {
             "name": "OptionA",
             "pipeline_override": {
-                "NodeA": { "enabled": true },
-                "NodeB": { "enabled": false }
+                "NodeA": {"enabled": true},
+                "NodeB": {"enabled": false}
             }
         },
         {
             "name": "OptionB",
             "pipeline_override": {
-                "NodeA": { "enabled": false },
-                "NodeB": { "enabled": true }
+                "NodeA": {"enabled": false},
+                "NodeB": {"enabled": true}
             }
         }
     ],
@@ -77,13 +77,13 @@ Parent.next: ["OptionA", "OptionB", "EndTask"]
         {
             "name": "ItemA",
             "pipeline_override": {
-                "NodeA": { "enabled": true }
+                "NodeA": {"enabled": true}
             }
         },
         {
             "name": "ItemB",
             "pipeline_override": {
-                "NodeB": { "enabled": true }
+                "NodeB": {"enabled": true}
             }
         }
     ]
@@ -108,13 +108,13 @@ checkbox case 通常只启用自身节点，不禁用兄弟节点。
         {
             "name": "Yes",
             "pipeline_override": {
-                "Node": { "enabled": true }
+                "Node": {"enabled": true}
             }
         },
         {
             "name": "No",
             "pipeline_override": {
-                "Node": { "enabled": false }
+                "Node": {"enabled": false}
             }
         }
     ]
@@ -131,7 +131,7 @@ checkbox case 通常只启用自身节点，不禁用兄弟节点。
 {
     "name": "Yes",
     "pipeline_override": {
-        "NodeA": { "enabled": true }
+        "NodeA": {"enabled": true}
     },
     "option": ["SubOptionName"]
 }

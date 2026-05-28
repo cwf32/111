@@ -45,16 +45,16 @@ MDA/
 
 关键文件：
 
-| 路径 | 用途 |
-| --- | --- |
-| `assets/interface.json` | Project Interface 主配置，包含 import、group、controller、resource 等 |
-| `assets/tasks/*.json` | PI 任务定义和 option 配置 |
-| `assets/tasks/preset/*.json` | 预设任务组合 |
-| `assets/resource/pipeline/**.json` | MaaFramework Pipeline 节点 |
-| `assets/locales/interface/zh_cn.json` | 界面中文文案 |
-| `assets/locales/interface/en_us.json` | 界面英文文案 |
-| `tools/schema/*.json` | Pipeline / PI / Custom schema |
-| `agent/go-service/` | Go Agent 自定义逻辑 |
+| 路径                                  | 用途                                                                  |
+| ------------------------------------- | --------------------------------------------------------------------- |
+| `assets/interface.json`               | Project Interface 主配置，包含 import、group、controller、resource 等 |
+| `assets/tasks/*.json`                 | PI 任务定义和 option 配置                                             |
+| `assets/tasks/preset/*.json`          | 预设任务组合                                                          |
+| `assets/resource/pipeline/**.json`    | MaaFramework Pipeline 节点                                            |
+| `assets/locales/interface/zh_cn.json` | 界面中文文案                                                          |
+| `assets/locales/interface/en_us.json` | 界面英文文案                                                          |
+| `tools/schema/*.json`                 | Pipeline / PI / Custom schema                                         |
+| `agent/go-service/`                   | Go Agent 自定义逻辑                                                   |
 
 ## MDA locale 范围
 
@@ -75,24 +75,24 @@ MDA 当前 interface locale 主要维护：
 
 MDA Pipeline 当前常见业务域包括：
 
-| Domain | 说明 |
-| --- | --- |
-| `Advise` | 咨询 / 剧情 / 剧集相关 |
-| `Arena` | 竞技场相关 |
-| `Battle` | 战斗通用流程 |
-| `Common` | 通用 UI、弹窗、交互 |
-| `CoordinatedOperations` | 协同作战 |
-| `DailyRewards` | 日常奖励 |
-| `Event` | 活动通用域 |
-| `Interception` | 拦截战 |
-| `Login` | 登录流程 |
-| `MapPushing` | 推图 |
-| `Navigation` | 导航和回到主界面 |
-| `Outpost` | 前哨基地 |
-| `RedDotClear` | 红点清理 |
-| `Shop` | 商店 |
-| `SimulationRoom` | 模拟室 |
-| `TribeTower` | 企业塔 / 阵营塔 |
+| Domain                  | 说明                   |
+| ----------------------- | ---------------------- |
+| `Advise`                | 咨询 / 剧情 / 剧集相关 |
+| `Arena`                 | 竞技场相关             |
+| `Battle`                | 战斗通用流程           |
+| `Common`                | 通用 UI、弹窗、交互    |
+| `CoordinatedOperations` | 协同作战               |
+| `DailyRewards`          | 日常奖励               |
+| `Event`                 | 活动通用域             |
+| `Interception`          | 拦截战                 |
+| `Login`                 | 登录流程               |
+| `MapPushing`            | 推图                   |
+| `Navigation`            | 导航和回到主界面       |
+| `Outpost`               | 前哨基地               |
+| `RedDotClear`           | 红点清理               |
+| `Shop`                  | 商店                   |
+| `SimulationRoom`        | 模拟室                 |
+| `TribeTower`            | 企业塔 / 阵营塔        |
 
 新增节点时优先沿用现有目录与 Domain；不要为了单个节点新建同义 Domain。
 
@@ -150,21 +150,21 @@ MDA 任务文件位于 `assets/tasks/`，当前包括：
 
 这些例子来自 MDA 现有任务，用于辅助判断 `generate-pi-task` 的 option 类型。
 
-| Task File | Option | Type | 说明 |
-| --- | --- | --- | --- |
-| `Arena.json` | `SpecialReward` | `switch` | 单个是否领取奖励的开关 |
-| `Arena.json` | `EnterRookieArena` | `switch` | 单个是否进入该竞技场的开关 |
-| `Interception.json` | `InterceptionType` | `select` | Normal / Anomaly 互斥 |
-| `Interception.json` | `NormalyInterceptionLevel` | nested `select` | 普通拦截的难度子选项 |
-| `Interception.json` | `AnomalyInterceptionTarget` | nested `select` | 异常拦截的目标子选项 |
-| `Interception.json` | `ManualInterceptionBattle` | `switch` | 单个功能开关 |
-| `Shop.json` | `ArenaShopItemList` | `checkbox` | 多个独立商店物品可同时购买 |
-| `Shop.json` | `RecyclingShopList` | `checkbox` | 多个独立可回收物品，存在默认选择 |
-| `Shop.json` | `CommonShopFreeGoods` | `switch` | 单个是否领取免费商品开关 |
-| `SimulationRoom.json` | `StartOverlock` | `switch` | Yes case 下嵌套 `AutoBIOSSetting` |
-| `SimulationRoom.json` | `AutoBIOSSetting` | nested `switch` | 自动难度子开关 |
-| `Outpost.json` | `DefenseRewards` | `switch` | 默认开启时可设置 `default_case: "Yes"` |
-| `TribeTower.json` | `EnterCommonTower` | `switch` | 默认关闭时可按既有风格让 No 在 Yes 前 |
+| Task File             | Option                      | Type            | 说明                                   |
+| --------------------- | --------------------------- | --------------- | -------------------------------------- |
+| `Arena.json`          | `SpecialReward`             | `switch`        | 单个是否领取奖励的开关                 |
+| `Arena.json`          | `EnterRookieArena`          | `switch`        | 单个是否进入该竞技场的开关             |
+| `Interception.json`   | `InterceptionType`          | `select`        | Normal / Anomaly 互斥                  |
+| `Interception.json`   | `NormalyInterceptionLevel`  | nested `select` | 普通拦截的难度子选项                   |
+| `Interception.json`   | `AnomalyInterceptionTarget` | nested `select` | 异常拦截的目标子选项                   |
+| `Interception.json`   | `ManualInterceptionBattle`  | `switch`        | 单个功能开关                           |
+| `Shop.json`           | `ArenaShopItemList`         | `checkbox`      | 多个独立商店物品可同时购买             |
+| `Shop.json`           | `RecyclingShopList`         | `checkbox`      | 多个独立可回收物品，存在默认选择       |
+| `Shop.json`           | `CommonShopFreeGoods`       | `switch`        | 单个是否领取免费商品开关               |
+| `SimulationRoom.json` | `StartOverlock`             | `switch`        | Yes case 下嵌套 `AutoBIOSSetting`      |
+| `SimulationRoom.json` | `AutoBIOSSetting`           | nested `switch` | 自动难度子开关                         |
+| `Outpost.json`        | `DefenseRewards`            | `switch`        | 默认开启时可设置 `default_case: "Yes"` |
+| `TribeTower.json`     | `EnterCommonTower`          | `switch`        | 默认关闭时可按既有风格让 No 在 Yes 前  |
 
 判断原则：
 

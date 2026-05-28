@@ -13,11 +13,11 @@ meojson 是 MaaFramework 依赖中常用的 header-only C++ JSON 库。通常通
 
 ## 核心类型
 
-| 类型 | 说明 |
-| --- | --- |
-| `json::value` | 通用 JSON 值：null / bool / number / string / array / object |
-| `json::array` | JSON 数组，包装 `std::vector<json::value>` |
-| `json::object` | JSON 对象，包装 `std::map<std::string, json::value>` |
+| 类型           | 说明                                                         |
+| -------------- | ------------------------------------------------------------ |
+| `json::value`  | 通用 JSON 值：null / bool / number / string / array / object |
+| `json::array`  | JSON 数组，包装 `std::vector<json::value>`                   |
+| `json::object` | JSON 对象，包装 `std::map<std::string, json::value>`         |
 
 ## 解析
 
@@ -221,12 +221,12 @@ MEO_OPT MEO_KEY("default") default_
 
 ## 子宏
 
-| 宏 | 生成内容 |
-| --- | --- |
-| `MEO_TOJSON(...)` | `to_json()` |
-| `MEO_FROMJSON(...)` | `from_json()` |
-| `MEO_CHECKJSON(...)` | `check_json()` |
-| `MEO_JSONIZATION(...)` | 全部三个 |
+| 宏                     | 生成内容       |
+| ---------------------- | -------------- |
+| `MEO_TOJSON(...)`      | `to_json()`    |
+| `MEO_FROMJSON(...)`    | `from_json()`  |
+| `MEO_CHECKJSON(...)`   | `check_json()` |
+| `MEO_JSONIZATION(...)` | 全部三个       |
 
 ## ext::jsonization
 

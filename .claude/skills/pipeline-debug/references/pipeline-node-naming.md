@@ -12,11 +12,11 @@ Pipeline 节点名是 JSON 根对象中的 key，会被 `next`、`on_error`、`t
 <Domain><ActionOrObject><Role>
 ```
 
-| 部分 | 含义 | 示例 |
-| --- | --- | --- |
-| `Domain` | 所属业务域、模块或共享域 | `Common`、`Navigation`、`Shop`、`Battle` |
-| `ActionOrObject` | 节点处理的动作、页面、对象、状态或业务目标 | `EnterPage`、`RewardDialog`、`QuickBattle` |
-| `Role` | 节点在流程中的功能角色 | `Main`、`Flow`、`Visible`、`Available`、`Confirm` |
+| 部分             | 含义                                       | 示例                                              |
+| ---------------- | ------------------------------------------ | ------------------------------------------------- |
+| `Domain`         | 所属业务域、模块或共享域                   | `Common`、`Navigation`、`Shop`、`Battle`          |
+| `ActionOrObject` | 节点处理的动作、页面、对象、状态或业务目标 | `EnterPage`、`RewardDialog`、`QuickBattle`        |
+| `Role`           | 节点在流程中的功能角色                     | `Main`、`Flow`、`Visible`、`Available`、`Confirm` |
 
 推荐示例：
 
@@ -58,15 +58,15 @@ Check2
 
 常见 Domain：
 
-| Domain | 用途 |
-| --- | --- |
-| `Common` | 全局通用 UI 操作，例如确认、关闭、返回、空白点击 |
-| `Navigation` | 跨模块导航、回到首页、进入主功能区 |
-| `Login` | 登录、启动、下载确认、登录奖励等启动流程 |
-| `Shop` | 商店相关流程 |
-| `Battle` | 战斗相关流程 |
-| `DailyTask` | 日常任务相关流程 |
-| `Event` | 活动相关流程 |
+| Domain       | 用途                                             |
+| ------------ | ------------------------------------------------ |
+| `Common`     | 全局通用 UI 操作，例如确认、关闭、返回、空白点击 |
+| `Navigation` | 跨模块导航、回到首页、进入主功能区               |
+| `Login`      | 登录、启动、下载确认、登录奖励等启动流程         |
+| `Shop`       | 商店相关流程                                     |
+| `Battle`     | 战斗相关流程                                     |
+| `DailyTask`  | 日常任务相关流程                                 |
+| `Event`      | 活动相关流程                                     |
 
 共享域名称应保持唯一和一致。若使用 `Common` 表达全局通用 UI 操作，就不要同时用 `Base`、`Global` 表达同一类节点。
 
@@ -95,7 +95,11 @@ Check2
 ```json
 {
     "ShopPurchaseItemFlow": {
-        "next": ["ShopPurchaseDialogVisible", "[JumpBack]CommonConfirmAction", "CommonConfirmReward"]
+        "next": [
+            "ShopPurchaseDialogVisible",
+            "[JumpBack]CommonConfirmAction",
+            "CommonConfirmReward"
+        ]
     }
 }
 ```
@@ -167,15 +171,15 @@ EventEnterLoginRewardPage
 <Domain><Object>Detected
 ```
 
-| 后缀 | 含义 |
-| --- | --- |
-| `Visible` | UI 元素、页面文字、按钮、红点、图标等在界面上可见 |
-| `Available` | 功能、按钮、次数可用 |
-| `Claimed` | 奖励或任务已领取 |
-| `Selected` | 选项已选中 |
-| `Completed` | 流程、任务、收集、阶段已完成 |
-| `Exhausted` | 次数、资源、机会已耗尽 |
-| `Detected` | 非 UI 的异常、状态、算法信号被检测到；仅在其他后缀都不准确时使用 |
+| 后缀        | 含义                                                             |
+| ----------- | ---------------------------------------------------------------- |
+| `Visible`   | UI 元素、页面文字、按钮、红点、图标等在界面上可见                |
+| `Available` | 功能、按钮、次数可用                                             |
+| `Claimed`   | 奖励或任务已领取                                                 |
+| `Selected`  | 选项已选中                                                       |
+| `Completed` | 流程、任务、收集、阶段已完成                                     |
+| `Exhausted` | 次数、资源、机会已耗尽                                           |
+| `Detected`  | 非 UI 的异常、状态、算法信号被检测到；仅在其他后缀都不准确时使用 |
 
 ### 点击 / 选择 / 领取节点
 
