@@ -35,6 +35,18 @@ func runRuntimeQuotaCheck(ctx *maa.Context) bool {
 	}
 
 	status := GetMembershipStatus()
+	if status.UpdateRequired {
+		if status.UpdateMessage != "" {
+			maafocus.Print(ctx, status.UpdateMessage)
+		} else {
+			maafocus.Print(ctx, fmt.Sprintf(
+				i18n.T("tasker.membership_check.update_required"),
+				status.MinimumSupportedVersion,
+			))
+		}
+		return false
+	}
+
 	snapshot, ok, err := EnsureQuotaAvailable(status)
 	if err != nil {
 		log.Warn().Err(err).Msg("RuntimeQuotaCheck: failed to read local quota state")

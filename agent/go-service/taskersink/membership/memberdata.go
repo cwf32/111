@@ -73,22 +73,46 @@ type MemberStatusResponse struct {
 	AllFeaturesUnlocked bool   `json:"all_features_unlocked"`
 }
 
+type updateRequiredResponse struct {
+	Error                   string `json:"error"`
+	UpdateRequired          bool   `json:"update_required"`
+	MinimumSupportedVersion string `json:"minimum_supported_version"`
+}
+
+type updateRequiredError struct {
+	Message                 string
+	MinimumSupportedVersion string
+}
+
+func (e *updateRequiredError) Error() string {
+	if e.Message != "" {
+		return e.Message
+	}
+	if e.MinimumSupportedVersion != "" {
+		return "MDA version is no longer supported; update to " + e.MinimumSupportedVersion + " or later"
+	}
+	return "MDA version is no longer supported"
+}
+
 // MembershipStatus represents the current membership state.
 type MembershipStatus struct {
-	Tier                string
-	TierCode            string
-	TierName            string
-	PlanCode            string
-	PlanName            string
-	StartsOn            string
-	ExpiresOn           string
-	RemainingDays       int
-	DailyRuntimeMinutes int
-	AllFeaturesUnlocked bool
-	UnlimitedRuntime    bool
-	IsMember            bool
-	UserID              string
-	DeviceCode          DeviceCodeV7
+	Tier                    string
+	TierCode                string
+	TierName                string
+	PlanCode                string
+	PlanName                string
+	StartsOn                string
+	ExpiresOn               string
+	RemainingDays           int
+	DailyRuntimeMinutes     int
+	AllFeaturesUnlocked     bool
+	UnlimitedRuntime        bool
+	IsMember                bool
+	UpdateRequired          bool
+	UpdateMessage           string
+	MinimumSupportedVersion string
+	UserID                  string
+	DeviceCode              DeviceCodeV7
 }
 
 var (
@@ -160,6 +184,23 @@ func checkMembership() *MembershipStatus {
 
 	response, err := fetchMemberStatus(deviceCode)
 	if err != nil {
+		var updateErr *updateRequiredError
+		if errors.As(err, &updateErr) {
+			status := &MembershipStatus{
+				Tier:                    defaultStatus.Tier,
+				TierCode:                defaultStatus.TierCode,
+				TierName:                defaultStatus.TierName,
+				PlanName:                defaultStatus.PlanName,
+				DailyRuntimeMinutes:     defaultStatus.DailyRuntimeMinutes,
+				AllFeaturesUnlocked:     defaultStatus.AllFeaturesUnlocked,
+				UpdateRequired:          true,
+				UpdateMessage:           updateErr.Message,
+				MinimumSupportedVersion: updateErr.MinimumSupportedVersion,
+				DeviceCode:              deviceCode,
+			}
+			cacheStatus(status)
+			return status
+		}
 		log.Warn().Err(err).Msg("Membership verification unavailable, treating as non-member for this check")
 		return defaultStatus
 	}
@@ -285,6 +326,16 @@ func fetchMemberStatusOnce(client *http.Client, payload []byte) (*MemberStatusRe
 
 	if resp.StatusCode != http.StatusOK {
 		body, _ := io.ReadAll(io.LimitReader(resp.Body, 512))
+		if resp.StatusCode == http.StatusUpgradeRequired {
+			var updateResponse updateRequiredResponse
+			if err := json.Unmarshal(body, &updateResponse); err == nil && updateResponse.UpdateRequired {
+				return nil, resp.StatusCode, &updateRequiredError{
+					Message:                 updateResponse.Error,
+					MinimumSupportedVersion: updateResponse.MinimumSupportedVersion,
+				}
+			}
+			return nil, resp.StatusCode, &updateRequiredError{}
+		}
 		return nil, resp.StatusCode, fmt.Errorf("HTTP %d from membership status source: %s", resp.StatusCode, strings.TrimSpace(string(body)))
 	}
 
